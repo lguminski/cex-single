@@ -8,7 +8,7 @@ defmodule MyApplication do
 
   alias MyTypes.{MySQL}
 
-  function DatabaseProvider, type: Function.DockerService do
+  actor DatabaseProvider, type: Function.DockerService do
     output(:mysql12, type: MySQL.define(version: 8.0))
 
     @impl true
