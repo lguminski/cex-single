@@ -28,7 +28,7 @@ defmodule MyApplication do
     end
 
     @impl true
-    def initialize_application(_this) do
+    def initialize_aca(_this) do
       Logger.debug("application #{inspect(Application.get_application(__MODULE__))}")
       #      set_author(this, "Arnold S", "arnold@hotmail.com")
       # 			set_version(this, "0.2.0")
