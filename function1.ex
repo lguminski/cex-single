@@ -26,12 +26,5 @@ defmodule MyApplication do
             {:ok, _database_provider} =
               add_component(this, "database#{i}", DatabaseProvider, [], [])
     end
-
-    @impl true
-    def initialize(_this) do
-      Logger.debug("application #{inspect(Application.get_application(__MODULE__))}")
-      #      set_author(this, "Arnold S", "arnold@hotmail.com")
-      # 			set_version(this, "0.2.0")
-    end
   end
 end
