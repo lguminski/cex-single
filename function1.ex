@@ -5,6 +5,7 @@ end
 
 defmodule MyApplication do
   use CyberOS.DSL, version: 1.0
+  alias MyTypes.SensorProtocol
 
   actor Sensor, type: Actor.OCIContainer do
     output(:api, type: SensorProtocol.define(version: 1.0))
