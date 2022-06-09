@@ -1,6 +1,6 @@
 defmodule MyTypes do
   use CyberOS.DSL, version: 1.0
-  type(SensorProtocol, implements: DotVersionedType)
+  type(SensorProtocol, implements: DotVersioning)
 end
 
 defmodule MyApplication do
