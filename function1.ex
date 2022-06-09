@@ -7,8 +7,8 @@ defmodule MyApplication do
   use CyberOS.DSL, version: 1.0
   alias MyTypes.SensorProtocol
 
-  actor Sensor, type: Actor.OCIContainer do
-    output(:api, type: SensorProtocol.define(version: 1.0))
+  actor Sensor, spec: Actor.OCIContainer do
+    output(:api, spec: SensorProtocol.output_spec(version: 1.0))
 
     @impl true
     def initialize(_this) do
@@ -21,9 +21,7 @@ defmodule MyApplication do
     @impl true
     def initialize(this) do
       for i <- 0..10,
-          do:
-            {:ok, _sensor} =
-              add_component(this, "sensor #{i}", Sensor, [], [])
+          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, [], [])
     end
   end
 end
