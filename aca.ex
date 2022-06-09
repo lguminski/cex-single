@@ -1,6 +1,6 @@
 defmodule MyTypes do
   use CyberOS.DSL, version: 1.0
-  type(SensorProtocol, implements: DotVersioning)
+  type(SensorProtocol, implements: SemanticVersioning)
 end
 
 defmodule MyApplication do
@@ -8,7 +8,7 @@ defmodule MyApplication do
   alias MyTypes.SensorProtocol
 
   actor Sensor, type: Actor.OCIContainer do
-    output(:api, spec: SensorProtocol.output_spec(version: 1.0))
+    output(:api, spec: SensorProtocol.output_spec("1.0.0"))
 
     @impl true
     def initialize(_this) do
