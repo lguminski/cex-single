@@ -1,1 +1,1 @@
-default_entry = "MyApplication.ACA"
+entryPoint = "MyApplication.ACA"
