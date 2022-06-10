@@ -1,14 +1,14 @@
 defmodule MyTypes do
-  use CyberOS.DSL, version: 1.0
+  use CyberOS.DSL
   type(SensorProtocol, implements: SemanticVersioning)
 end
 
 defmodule MyApplication do
-  use CyberOS.DSL, version: 1.0
+  use CyberOS.DSL
   alias MyTypes.SensorProtocol
 
   actor Sensor, type: Actor.OCIContainer do
-    output(:api, spec: SensorProtocol.output_spec("1.0.0"))
+    output("api", spec: SensorProtocol.output_spec("1.0.0"))
 
     @impl true
     def initialize(_this) do
@@ -16,12 +16,12 @@ defmodule MyApplication do
   end
 
   composite ACA do
-    param(:count, default: 18)
+    param("count", default: 18)
 
     @impl true
     def initialize(this) do
       for i <- 0..10,
-          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, [], [])
+          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{}, %{})
     end
   end
 end
