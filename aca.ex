@@ -9,6 +9,7 @@ defmodule MyApplication do
 
   actor Sensor, type: Actor.OCIContainer do
     output("api", spec: SensorProtocol.output_spec("1.0.0"))
+    param("test")
 
     @impl true
     def initialize(_this) do
@@ -16,13 +17,13 @@ defmodule MyApplication do
   end
 
   composite ACA do
-    param("count")
+    param("count", default: 10)
 
     @impl true
     def initialize(this) do
       for i <- 0..get_parameter_value(this, "count"),
           i > 0,
-          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{}, %{})
+          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{"test" => 2}, %{})
     end
   end
 end
