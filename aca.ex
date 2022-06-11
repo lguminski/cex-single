@@ -6,6 +6,7 @@ end
 defmodule MyApplication do
   use CyberOS.DSL
   alias MyTypes.SensorProtocol
+  param("test")
 
   actor Sensor, type: Actor.OCIContainer do
     output("api", spec: SensorProtocol.output_spec("1.0.0"))
