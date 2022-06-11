@@ -19,10 +19,13 @@ defmodule MyApplication do
   composite ACA do
     param("count", default: 10)
 
+
+ss
+
     @impl true
     def initialize(this) do
       for i <- 0..get_parameter_value(this, "count"),
-          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{"test" => "33"}, %{})
+          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{}, %{})
     end
   end
 end
