@@ -19,9 +19,6 @@ defmodule MyApplication do
   composite ACA do
     param("count", default: 10)
 
-
-ss
-
     @impl true
     def initialize(this) do
       for i <- 0..get_parameter_value(this, "count"),
