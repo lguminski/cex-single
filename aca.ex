@@ -16,7 +16,7 @@ defmodule MyApplication do
     end
   end
 
-  composite ACA do
+  composite ACA2 do
     param("count", default: 10)
 
     @impl true
