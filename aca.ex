@@ -16,7 +16,7 @@ defmodule MyApplication do
   end
 
   composite ACA do
-    param("count", default: 10)
+    parameter("count", default: 10)
 
     @impl true
     def initialize(this) do
