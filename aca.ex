@@ -20,7 +20,7 @@ defmodule MyApplication do
 
     @impl true
     def initialize(this) do
-      for i <- 0..10,
+      for i <- 0..get_parameter_value(this, "count"),
           do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{}, %{})
     end
   end
