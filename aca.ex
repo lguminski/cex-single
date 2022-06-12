@@ -1,27 +1,29 @@
-defmodule MyTypes do
+defmodule Main do
   use CyberOS.DSL
-  type(SensorProtocol, implements: SemanticVersioning)
-end
-
-defmodule MyApplication do
-  use CyberOS.DSL
-  alias MyTypes.SensorProtocol
-
-  actor Sensor, type: Actor.OCIContainer do
-    output("api", spec: SensorProtocol.output_spec("1.0.0"))
-
-    @impl true
-    def initialize(_this) do
-    end
-  end
 
   composite ACA do
-    parameter("count", default: 10)
+    require FromStage1
+    alias FromStage1.Stage1
+    alias FromStage2.Stage2
+    alias FromStage3.Stage3
+
+    output("a")
+    output("b")
+    output("c")
 
     @impl true
     def initialize(this) do
-      for i <- 0..get_parameter_value(this, "count"),
-          do: {:ok, _sensor} = add_component(this, "sensor #{i}", Sensor, %{}, %{})
+      {:ok, stage1} = add_component(this, "stage 1", Stage1, %{}, %{})
+
+      {:ok, stage2} =
+        add_component(this, "stage 2", Stage2, %{}, %{"p" => pin_output(stage1, "p")})
+
+      {:ok, stage3} =
+        add_component(this, "stage 3", Stage3, %{}, %{"f" => pin_output(stage2, "f")})
+
+      expose_output(this, pin_output(stage1, "a"))
+      expose_output(this, pin_output(stage1, "b"))
+      expose_output(this, pin_output(stage3, "c"))
     end
   end
 end

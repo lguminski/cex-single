@@ -1,0 +1,49 @@
+defmodule FromSupplier1 do
+  use CyberOS.DSL
+  require Types
+  alias Types.T1
+  alias Types.T13
+  alias Types.T14
+  alias Types.T15
+  alias Types.T16
+  alias Types.T17
+
+  actor B do
+    input("u", spec: T17.input_spec())
+    output("r", spec: T14.output_spec())
+    output("t", spec: T16.output_spec())
+  end
+
+  actor C do
+    input("r", spec: T14.input_spec())
+    output("s", spec: T15.output_spec())
+    output("p", spec: T13.output_spec())
+  end
+
+  actor D do
+    input("s", spec: T15.input_spec())
+    input("t", spec: T16.input_spec())
+    output("a", spec: T1.output_spec())
+    output("b", spec: T1.output_spec())
+  end
+
+  composite Supplier1 do
+    input("u")
+    output("a")
+    output("b")
+    output("p")
+
+    @impl true
+    def initialize(this) do
+      {:ok, b} = add_component(this, "B", B, %{}, %{"u" => pin_input("u")})
+      {:ok, c} = add_component(this, "C", C, %{}, %{"r" => pin_output(b, "r")})
+
+      {:ok, d} =
+        add_component(this, "D", D, %{}, %{"t" => pin_output(b, "t"), "s" => pin_output(c, "s")})
+
+      expose_output(this, pin_output(d, "a"))
+      expose_output(this, pin_output(d, "b"))
+      expose_output(this, pin_output(c, "p"))
+    end
+  end
+end
