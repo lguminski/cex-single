@@ -30,12 +30,12 @@ defmodule FromSupplier2 do
 
       {:ok, g} =
         add_component(this, "G", G, %{}, %{
-          "k" => pin_output(team_A, "k"),
-          "l" => pin_output(team_A, "l"),
-          "m" => pin_output(l, "m")
+          "k" => get_output(team_A, "k"),
+          "l" => get_output(team_A, "l"),
+          "m" => get_output(l, "m")
         })
 
-      expose_output(this, pin_output(g, "j"))
+      expose_output(this, get_output(g, "j"))
     end
   end
 end

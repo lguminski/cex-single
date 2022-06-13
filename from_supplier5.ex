@@ -17,9 +17,9 @@ defmodule FromSupplier5 do
 
     @impl true
     def initialize(this) do
-      {:ok, n} = add_component(this, "N", N, %{}, %{"i" => pin_input("i"), "h" => pin_input("h")})
+      {:ok, n} = add_component(this, "N", N, %{}, %{"i" => get_input("i"), "h" => get_input("h")})
 
-      expose_output(this, pin_output(n, "g"))
+      expose_output(this, get_output(n, "g"))
     end
   end
 end

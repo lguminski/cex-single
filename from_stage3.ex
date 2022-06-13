@@ -17,17 +17,17 @@ defmodule FromStage3 do
 
       {:ok, supplier5} =
         add_component(this, "Supplier 5", Supplier5, %{}, %{
-          "i" => pin_output(supplier4, "i"),
-          "h" => pin_output(supplier4, "h")
+          "i" => get_output(supplier4, "i"),
+          "h" => get_output(supplier4, "h")
         })
 
       {:ok, supplier6} =
         add_component(this, "Supplier 6", Supplier6, %{}, %{
-          "g" => pin_output(supplier5, "g"),
-          "f" => pin_input("f")
+          "g" => get_output(supplier5, "g"),
+          "f" => get_input("f")
         })
 
-      expose_output(this, pin_output(supplier6, "c"))
+      expose_output(this, get_output(supplier6, "c"))
     end
   end
 end

@@ -16,14 +16,14 @@ defmodule Main do
       {:ok, stage1} = add_component(this, "stage 1", Stage1, %{}, %{})
 
       {:ok, stage2} =
-        add_component(this, "stage 2", Stage2, %{}, %{"p" => pin_output(stage1, "p")})
+        add_component(this, "stage 2", Stage2, %{}, %{"p" => get_output(stage1, "p")})
 
       {:ok, stage3} =
-        add_component(this, "stage 3", Stage3, %{}, %{"f" => pin_output(stage2, "f")})
+        add_component(this, "stage 3", Stage3, %{}, %{"f" => get_output(stage2, "f")})
 
-      expose_output(this, pin_output(stage1, "a"))
-      expose_output(this, pin_output(stage1, "b"))
-      expose_output(this, pin_output(stage3, "c"))
+      expose_output(this, get_output(stage1, "a"))
+      expose_output(this, get_output(stage1, "b"))
+      expose_output(this, get_output(stage3, "c"))
     end
   end
 end

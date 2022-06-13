@@ -25,15 +25,15 @@ defmodule FromStage2 do
       {:ok, supplier2} = add_component(this, "Supplier 2", Supplier2, %{}, %{})
 
       {:ok, supplier3} =
-        add_component(this, "Supplier 3", Supplier3, %{}, %{"p" => pin_input("p")})
+        add_component(this, "Supplier 3", Supplier3, %{}, %{"p" => get_input("p")})
 
       {:ok, h} =
         add_component(this, "H", H, %{}, %{
-          "j" => pin_output(supplier2, "j"),
-          "n" => pin_output(supplier3, "n")
+          "j" => get_output(supplier2, "j"),
+          "n" => get_output(supplier3, "n")
         })
 
-      expose_output(this, pin_output(h, "f"))
+      expose_output(this, get_output(h, "f"))
     end
   end
 end

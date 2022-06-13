@@ -19,11 +19,11 @@ defmodule FromStage1 do
       {:ok, a} = add_component(this, "A", A, %{}, %{})
 
       {:ok, supplier1} =
-        add_component(this, "Supplier 1", Supplier1, %{}, %{"u" => pin_output(a, "u")})
+        add_component(this, "Supplier 1", Supplier1, %{}, %{"u" => get_output(a, "u")})
 
-      expose_output(this, pin_output(supplier1, "a"))
-      expose_output(this, pin_output(supplier1, "b"))
-      expose_output(this, pin_output(supplier1, "p"))
+      expose_output(this, get_output(supplier1, "a"))
+      expose_output(this, get_output(supplier1, "b"))
+      expose_output(this, get_output(supplier1, "p"))
     end
   end
 end

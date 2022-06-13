@@ -25,9 +25,9 @@ defmodule FromSupplier3 do
       {:ok, e} = add_component(this, "E", E, %{}, %{})
 
       {:ok, f} =
-        add_component(this, "F", F, %{}, %{"p" => pin_input("p"), "o" => pin_output(e, "o")})
+        add_component(this, "F", F, %{}, %{"p" => get_input("p"), "o" => get_output(e, "o")})
 
-      expose_output(this, pin_output(f, "n"))
+      expose_output(this, get_output(f, "n"))
     end
   end
 end

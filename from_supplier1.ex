@@ -35,15 +35,15 @@ defmodule FromSupplier1 do
 
     @impl true
     def initialize(this) do
-      {:ok, b} = add_component(this, "B", B, %{}, %{"u" => pin_input("u")})
-      {:ok, c} = add_component(this, "C", C, %{}, %{"r" => pin_output(b, "r")})
+      {:ok, b} = add_component(this, "B", B, %{}, %{"u" => get_input("u")})
+      {:ok, c} = add_component(this, "C", C, %{}, %{"r" => get_output(b, "r")})
 
       {:ok, d} =
-        add_component(this, "D", D, %{}, %{"t" => pin_output(b, "t"), "s" => pin_output(c, "s")})
+        add_component(this, "D", D, %{}, %{"t" => get_output(b, "t"), "s" => get_output(c, "s")})
 
-      expose_output(this, pin_output(d, "a"))
-      expose_output(this, pin_output(d, "b"))
-      expose_output(this, pin_output(c, "p"))
+      expose_output(this, get_output(d, "a"))
+      expose_output(this, get_output(d, "b"))
+      expose_output(this, get_output(c, "p"))
     end
   end
 end

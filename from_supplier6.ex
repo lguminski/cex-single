@@ -29,13 +29,13 @@ defmodule FromSupplier6 do
 
     @impl true
     def initialize(this) do
-      {:ok, i} = add_component(this, "I", I, %{}, %{"f" => pin_input("f"), "g" => pin_input("g")})
+      {:ok, i} = add_component(this, "I", I, %{}, %{"f" => get_input("f"), "g" => get_input("g")})
       {:ok, r} = add_component(this, "R", R, %{}, %{})
 
       {:ok, m} =
-        add_component(this, "M", M, %{}, %{"e" => pin_output(i, "e"), "d" => pin_output(r, "d")})
+        add_component(this, "M", M, %{}, %{"e" => get_output(i, "e"), "d" => get_output(r, "d")})
 
-      expose_output(this, pin_output(m, "c"))
+      expose_output(this, get_output(m, "c"))
     end
   end
 end
