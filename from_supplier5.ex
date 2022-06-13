@@ -16,7 +16,7 @@ defmodule FromSupplier5 do
     output("g")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, n} = add_component(this, "N", N, %{}, %{"i" => get_input("i"), "h" => get_input("h")})
 
       expose_output(this, get_output(n, "g"))

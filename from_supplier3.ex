@@ -21,7 +21,7 @@ defmodule FromSupplier3 do
     output("n")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, e} = add_component(this, "E", E, %{}, %{})
 
       {:ok, f} =

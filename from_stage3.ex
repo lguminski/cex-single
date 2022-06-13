@@ -12,7 +12,7 @@ defmodule FromStage3 do
     output("c")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, supplier4} = add_component(this, "Supplier 4", Supplier4, %{}, %{})
 
       {:ok, supplier5} =

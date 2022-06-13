@@ -28,7 +28,7 @@ defmodule FromSupplier6 do
     output("c")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, i} = add_component(this, "I", I, %{}, %{"f" => get_input("f"), "g" => get_input("g")})
       {:ok, r} = add_component(this, "R", R, %{}, %{})
 

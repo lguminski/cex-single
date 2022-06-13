@@ -15,7 +15,7 @@ defmodule FromStage1 do
     output("p")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, a} = add_component(this, "A", A, %{}, %{})
 
       {:ok, supplier1} =

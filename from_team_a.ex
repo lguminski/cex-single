@@ -17,7 +17,7 @@ defmodule FromTeamA do
     output("k")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, k} = add_component(this, "K", K, %{}, %{})
       {:ok, j} = add_component(this, "J", J, %{}, %{})
 

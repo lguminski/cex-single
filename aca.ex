@@ -12,7 +12,7 @@ defmodule Main do
     output("c")
 
     @impl true
-    def initialize(this) do
+    def bootstrap(this) do
       {:ok, stage1} = add_component(this, "stage 1", Stage1, %{}, %{})
 
       {:ok, stage2} =
