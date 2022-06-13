@@ -1,6 +1,8 @@
 defmodule FromTeamA do
   use CyberOS.DSL
+
   require Types
+
   alias Types.T8
   alias Types.T9
 

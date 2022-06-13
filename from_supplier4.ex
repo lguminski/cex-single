@@ -1,6 +1,8 @@
 defmodule FromSupplier4 do
   use CyberOS.DSL
+
   require Types
+
   alias Types.T6
 
   actor O do

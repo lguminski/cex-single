@@ -1,6 +1,8 @@
 defmodule FromSupplier6 do
   use CyberOS.DSL
+
   require Types
+
   alias Types.T2
   alias Types.T3
   alias Types.T4

@@ -1,5 +1,6 @@
 defmodule Types do
   use CyberOS.DSL
+
   type(T1)
   type(T2)
   type(T3)

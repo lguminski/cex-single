@@ -1,12 +1,13 @@
 defmodule Main do
   use CyberOS.DSL
 
-  composite ACA do
-    require FromStage1
-    alias FromStage1.Stage1
-    alias FromStage2.Stage2
-    alias FromStage3.Stage3
+  require FromStage1
 
+  alias FromStage1.Stage1
+  alias FromStage2.Stage2
+  alias FromStage3.Stage3
+
+  composite ACA do
     output("a")
     output("b")
     output("c")

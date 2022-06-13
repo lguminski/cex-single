@@ -1,7 +1,9 @@
 defmodule FromStage1 do
   use CyberOS.DSL
+
   require Types
   require FromSupplier1
+
   alias Types.T17
   alias FromSupplier1.Supplier1
 
