@@ -8,16 +8,16 @@ defmodule FromSupplier2 do
   alias Types.T10
   alias FromTeamA.TeamA
 
-  actor L do
-    output("m", spec: T10.output_spec())
-  end
-
   actor G do
     input("k", spec: T8.input_spec())
     input("l", spec: T9.input_spec())
     input("m", spec: T10.input_spec())
 
     output("j", spec: T7.output_spec())
+  end
+
+  actor L do
+    output("m", spec: T10.output_spec())
   end
 
   composite Supplier2 do
