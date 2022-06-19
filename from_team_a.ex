@@ -6,20 +6,22 @@ defmodule FromTeamA do
   alias Types.T8
   alias Types.T9
 
-  actor K do
+  defactor K do
     output("l", spec: T9.output_spec())
   end
 
-  actor J do
+  defactor J do
     output("k", spec: T8.output_spec())
   end
 
-  composite TeamA do
+  defcluster TeamA do
     output("l")
     output("k")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, k} = add_component(this, "K", K, %{}, %{})
       {:ok, j} = add_component(this, "J", J, %{}, %{})
 

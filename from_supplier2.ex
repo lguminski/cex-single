@@ -10,7 +10,7 @@ defmodule FromSupplier2 do
   alias Types.T10
   alias FromTeamA.TeamA
 
-  actor G do
+  defactor G do
     input("k", spec: T8.input_spec())
     input("l", spec: T9.input_spec())
     input("m", spec: T10.input_spec())
@@ -18,15 +18,17 @@ defmodule FromSupplier2 do
     output("j", spec: T7.output_spec())
   end
 
-  actor L do
+  defactor L do
     output("m", spec: T10.output_spec())
   end
 
-  composite Supplier2 do
+  defcluster Supplier2 do
     output("j")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, team_A} = add_component(this, "team A", TeamA, %{}, %{})
       {:ok, l} = add_component(this, "L", L, %{}, %{})
 

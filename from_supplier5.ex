@@ -6,19 +6,21 @@ defmodule FromSupplier5 do
   alias Types.T5
   alias Types.T6
 
-  actor N do
+  defactor N do
     input("i", spec: T6.input_spec())
     input("h", spec: T6.input_spec())
     output("g", spec: T5.output_spec())
   end
 
-  composite Supplier5 do
+  defcluster Supplier5 do
     input("i")
     input("h")
     output("g")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, n} = add_component(this, "N", N, %{}, %{"i" => get_input("i"), "h" => get_input("h")})
 
       expose_output(this, get_output(n, "g"))

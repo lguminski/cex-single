@@ -11,19 +11,21 @@ defmodule FromStage2 do
   alias FromSupplier2.Supplier2
   alias FromSupplier3.Supplier3
 
-  actor H do
+  defactor H do
     input("j", spec: T7.input_spec())
     input("n", spec: T11.input_spec())
 
     output("f", spec: T4.output_spec())
   end
 
-  composite Stage2 do
+  defcluster Stage2 do
     input("p")
     output("f")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, supplier2} = add_component(this, "Supplier 2", Supplier2, %{}, %{})
 
       {:ok, supplier3} =

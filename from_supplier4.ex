@@ -5,20 +5,22 @@ defmodule FromSupplier4 do
 
   alias Types.T6
 
-  actor O do
+  defactor O do
     output("i", spec: T6.output_spec())
   end
 
-  actor P do
+  defactor P do
     output("h", spec: T6.output_spec())
   end
 
-  composite Supplier4 do
+  defcluster Supplier4 do
     output("i")
     output("h")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, o} = add_component(this, "O", O, %{}, %{})
       {:ok, p} = add_component(this, "P", P, %{}, %{})
 

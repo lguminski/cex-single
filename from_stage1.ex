@@ -7,17 +7,19 @@ defmodule FromStage1 do
   alias Types.T17
   alias FromSupplier1.Supplier1
 
-  actor A do
+  defactor A do
     output("u", spec: T17.output_spec())
   end
 
-  composite Stage1 do
+  defcluster Stage1 do
     output("a")
     output("b")
     output("p")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, a} = add_component(this, "A", A, %{}, %{})
 
       {:ok, supplier1} =

@@ -9,12 +9,14 @@ defmodule FromStage3 do
   alias FromSupplier5.Supplier5
   alias FromSupplier6.Supplier6
 
-  composite Stage3 do
+  defcluster Stage3 do
     input("f")
     output("c")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, supplier4} = add_component(this, "Supplier 4", Supplier4, %{}, %{})
 
       {:ok, supplier5} =

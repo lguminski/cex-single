@@ -10,33 +10,35 @@ defmodule FromSupplier1 do
   alias Types.T16
   alias Types.T17
 
-  actor B do
+  defactor B do
     input("u", spec: T17.input_spec())
     output("r", spec: T14.output_spec())
     output("t", spec: T16.output_spec())
   end
 
-  actor C do
+  defactor C do
     input("r", spec: T14.input_spec())
     output("s", spec: T15.output_spec())
     output("p", spec: T13.output_spec())
   end
 
-  actor D do
+  defactor D do
     input("s", spec: T15.input_spec())
     input("t", spec: T16.input_spec())
     output("a", spec: T1.output_spec())
     output("b", spec: T1.output_spec())
   end
 
-  composite Supplier1 do
+  defcluster Supplier1 do
     input("u")
     output("a")
     output("b")
     output("p")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, b} = add_component(this, "B", B, %{}, %{"u" => get_input("u")})
       {:ok, c} = add_component(this, "C", C, %{}, %{"r" => get_output(b, "r")})
 

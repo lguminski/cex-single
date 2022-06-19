@@ -7,13 +7,15 @@ defmodule Main do
   alias FromStage2.Stage2
   alias FromStage3.Stage3
 
-  composite ACA do
+  defcluster ACA do
     output("a")
     output("b")
     output("c")
 
     @impl true
-    def bootstrap(this) do
+    def bootstrap(this, args) do
+      super(this, args)
+
       {:ok, stage1} = add_component(this, "stage 1", Stage1, %{}, %{})
 
       {:ok, stage2} =
