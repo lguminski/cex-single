@@ -20,8 +20,6 @@ defmodule FromTeamA do
 
     @impl true
     def bootstrap(this, args) do
-      super(this, args)
-
       {:ok, k} = add_component(this, "K", K, %{}, %{})
       {:ok, j} = add_component(this, "J", J, %{}, %{})
 

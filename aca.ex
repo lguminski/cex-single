@@ -14,8 +14,6 @@ defmodule Main do
 
     @impl true
     def bootstrap(this, args) do
-      super(this, args)
-
       {:ok, stage1} = add_component(this, "stage 1", Stage1, %{}, %{})
 
       {:ok, stage2} =

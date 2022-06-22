@@ -37,8 +37,6 @@ defmodule FromSupplier1 do
 
     @impl true
     def bootstrap(this, args) do
-      super(this, args)
-
       {:ok, b} = add_component(this, "B", B, %{}, %{"u" => get_input("u")})
       {:ok, c} = add_component(this, "C", C, %{}, %{"r" => get_output(b, "r")})
 

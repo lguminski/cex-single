@@ -18,8 +18,6 @@ defmodule FromStage1 do
 
     @impl true
     def bootstrap(this, args) do
-      super(this, args)
-
       {:ok, a} = add_component(this, "A", A, %{}, %{})
 
       {:ok, supplier1} =

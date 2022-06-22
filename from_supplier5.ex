@@ -19,8 +19,6 @@ defmodule FromSupplier5 do
 
     @impl true
     def bootstrap(this, args) do
-      super(this, args)
-
       {:ok, n} = add_component(this, "N", N, %{}, %{"i" => get_input("i"), "h" => get_input("h")})
 
       expose_output(this, get_output(n, "g"))
