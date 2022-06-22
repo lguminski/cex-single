@@ -26,7 +26,7 @@ defmodule FromSupplier2 do
     output("j")
 
     @impl true
-    def bootstrap(this, args) do
+    def bootstrap(this, _args) do
       {:ok, team_A} = add_component(this, "team A", TeamA, %{}, %{})
       {:ok, l} = add_component(this, "L", L, %{}, %{})
 
