@@ -23,7 +23,7 @@ defmodule FromSupplier3 do
     output("n")
 
     @impl true
-    def bootstrap(this, _args) do
+    def on_bootstrap(this, _args) do
       {:ok, e} = add_component(this, "E", E, %{}, %{})
 
       {:ok, f} =
