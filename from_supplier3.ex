@@ -18,7 +18,7 @@ defmodule FromSupplier3 do
     output("n", spec: T11.output_spec())
   end
 
-  defcluster Supplier3 do
+  defcomposite Supplier3 do
     input("p")
     output("n")
 

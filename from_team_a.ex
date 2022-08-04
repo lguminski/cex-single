@@ -14,7 +14,7 @@ defmodule FromTeamA do
     output("k", spec: T8.output_spec())
   end
 
-  defcluster TeamA do
+  defcomposite TeamA do
     output("l")
     output("k")
 

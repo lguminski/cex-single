@@ -7,7 +7,7 @@ defmodule Main do
   alias FromStage2.Stage2
   alias FromStage3.Stage3
 
-  defcluster ACA do
+  defcomposite ACA do
     output("a")
     output("b")
     output("c")

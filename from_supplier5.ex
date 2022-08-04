@@ -12,7 +12,7 @@ defmodule FromSupplier5 do
     output("g", spec: T5.output_spec())
   end
 
-  defcluster Supplier5 do
+  defcomposite Supplier5 do
     input("i")
     input("h")
     output("g")

@@ -24,7 +24,7 @@ defmodule FromSupplier6 do
     output("c", spec: T2.output_spec())
   end
 
-  defcluster Supplier6 do
+  defcomposite Supplier6 do
     input("f")
     input("g")
     output("c")

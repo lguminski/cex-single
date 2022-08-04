@@ -22,7 +22,7 @@ defmodule FromSupplier2 do
     output("m", spec: T10.output_spec())
   end
 
-  defcluster Supplier2 do
+  defcomposite Supplier2 do
     output("j")
 
     @impl true
@@ -37,7 +37,7 @@ defmodule FromSupplier2 do
           "m" => get_output(l, "m")
         })
 
-      expose_output(this, get_output(g, "j"))
+      expose_output(this, get_output(g, "j"), as: "j")
     end
   end
 end

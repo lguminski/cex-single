@@ -9,7 +9,7 @@ defmodule FromStage3 do
   alias FromSupplier5.Supplier5
   alias FromSupplier6.Supplier6
 
-  defcluster Stage3 do
+  defcomposite Stage3 do
     input("f")
     output("c")
 

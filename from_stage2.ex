@@ -18,7 +18,7 @@ defmodule FromStage2 do
     output("f", spec: T4.output_spec())
   end
 
-  defcluster Stage2 do
+  defcomposite Stage2 do
     input("p")
     output("f")
 
@@ -35,7 +35,7 @@ defmodule FromStage2 do
           "n" => get_output(supplier3, "n")
         })
 
-      expose_output(this, get_output(h, "f"))
+      expose_output(this, get_output(h, "f"), as: "f")
     end
   end
 end

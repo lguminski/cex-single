@@ -13,7 +13,7 @@ defmodule FromSupplier4 do
     output("h", spec: T6.output_spec())
   end
 
-  defcluster Supplier4 do
+  defcomposite Supplier4 do
     output("i")
     output("h")
 

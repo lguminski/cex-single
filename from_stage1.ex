@@ -11,7 +11,7 @@ defmodule FromStage1 do
     output("u", spec: T17.output_spec())
   end
 
-  defcluster Stage1 do
+  defcomposite Stage1 do
     output("a")
     output("b")
     output("p")
