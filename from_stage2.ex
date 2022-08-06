@@ -1,7 +1,7 @@
 defmodule FromStage2 do
   use CyberOS.DSL
 
-  alias Types.T
+  alias Types.T4
   alias Types.T7
   alias Types.T11
   alias FromSupplier2.Supplier2
