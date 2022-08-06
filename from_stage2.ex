@@ -1,15 +1,17 @@
 defmodule FromStage2 do
   use CyberOS.DSL
 
-  require Types
-  require FromSupplier2
-  require FromSupplier3
+  alias Types.T
+  alias Types.T7
+  alias Types.T11
+  alias FromSupplier2.Supplier2
+  alias FromSupplier3.Supplier3
 
   defactor H do
-    input("j", spec: Types.T7.input_spec())
-    input("n", spec: Types.T11.input_spec())
+    input("j", spec: T7.input_spec())
+    input("n", spec: T11.input_spec())
 
-    output("f", spec: Types.T4.output_spec())
+    output("f", spec: T4.output_spec())
   end
 
   defcomposite Stage2 do
@@ -18,10 +20,10 @@ defmodule FromStage2 do
 
     @impl true
     def on_bootstrap(this, _args) do
-      {:ok, supplier2} = add_component(this, "Supplier 2", FromSupplier2.Supplier2, %{}, %{})
+      {:ok, supplier2} = add_component(this, "Supplier 2", Supplier2, %{}, %{})
 
       {:ok, supplier3} =
-        add_component(this, "Supplier 3", FromSupplier3.Supplier3, %{}, %{"p" => get_input("p")})
+        add_component(this, "Supplier 3", Supplier3, %{}, %{"p" => get_input("p")})
 
       {:ok, h} =
         add_component(this, "H", H, %{}, %{

@@ -1,10 +1,6 @@
 defmodule FromStage3 do
   use CyberOS.DSL
 
-  require FromSupplier4
-  require FromSupplier5
-  require FromSupplier6
-
   alias FromSupplier4.Supplier4
   alias FromSupplier5.Supplier5
   alias FromSupplier6.Supplier6

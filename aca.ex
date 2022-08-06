@@ -1,8 +1,6 @@
 defmodule Main do
   use CyberOS.DSL
 
-  require FromStage1
-
   alias FromStage1.Stage1
   alias FromStage2.Stage2
   alias FromStage3.Stage3

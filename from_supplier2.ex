@@ -1,9 +1,6 @@
 defmodule FromSupplier2 do
   use CyberOS.DSL
 
-  require Types
-  require FromTeamA
-
   alias Types.T7
   alias Types.T8
   alias Types.T9

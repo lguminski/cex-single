@@ -1,8 +1,6 @@
 defmodule FromSupplier5 do
   use CyberOS.DSL
 
-  require Types
-
   alias Types.T5
   alias Types.T6
 
