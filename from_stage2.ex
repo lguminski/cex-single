@@ -32,6 +32,7 @@ defmodule FromStage2 do
         })
 
       expose_output(this, get_output(h, "f"), as: "f")
+      :ok
     end
   end
 end
