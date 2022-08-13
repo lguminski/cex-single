@@ -20,9 +20,9 @@ defmodule Main do
       {:ok, stage3} =
         add_component(this, "stage 3", Stage3, %{}, %{"f" => get_output(stage2, "f")})
 
-      expose_output(this, get_output(stage1, "a"))
-      expose_output(this, get_output(stage1, "b"))
-      expose_output(this, get_output(stage3, "c"))
+      expose_output(this, get_output(stage1, "a"), as: "a")
+      expose_output(this, get_output(stage1, "b"), as: "b")
+      expose_output(this, get_output(stage3, "c"), as: "c")
     end
   end
 end

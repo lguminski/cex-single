@@ -41,9 +41,9 @@ defmodule FromSupplier1 do
       {:ok, d} =
         add_component(this, "D", D, %{}, %{"t" => get_output(b, "t"), "s" => get_output(c, "s")})
 
-      expose_output(this, get_output(d, "a"))
-      expose_output(this, get_output(d, "b"))
-      expose_output(this, get_output(c, "p"))
+      expose_output(this, get_output(d, "a"), as: "a")
+      expose_output(this, get_output(d, "b"), as: "b")
+      expose_output(this, get_output(c, "p"), as: "p")
     end
   end
 end

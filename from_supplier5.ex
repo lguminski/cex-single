@@ -19,7 +19,7 @@ defmodule FromSupplier5 do
     def on_bootstrap(this, _args) do
       {:ok, n} = add_component(this, "N", N, %{}, %{"i" => get_input("i"), "h" => get_input("h")})
 
-      expose_output(this, get_output(n, "g"))
+      expose_output(this, get_output(n, "g"), as: "g")
     end
   end
 end

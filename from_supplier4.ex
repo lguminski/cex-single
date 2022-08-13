@@ -20,8 +20,8 @@ defmodule FromSupplier4 do
       {:ok, o} = add_component(this, "O", O, %{}, %{})
       {:ok, p} = add_component(this, "P", P, %{}, %{})
 
-      expose_output(this, get_output(o, "i"))
-      expose_output(this, get_output(p, "h"))
+      expose_output(this, get_output(o, "i"), as: "i")
+      expose_output(this, get_output(p, "h"), as: "h")
     end
   end
 end

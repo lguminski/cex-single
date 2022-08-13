@@ -25,7 +25,7 @@ defmodule FromStage3 do
           "f" => get_input("f")
         })
 
-      expose_output(this, get_output(supplier6, "c"))
+      expose_output(this, get_output(supplier6, "c"), as: "c")
     end
   end
 end

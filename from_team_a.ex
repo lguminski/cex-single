@@ -21,8 +21,8 @@ defmodule FromTeamA do
       {:ok, k} = add_component(this, "K", K, %{}, %{})
       {:ok, j} = add_component(this, "J", J, %{}, %{})
 
-      expose_output(this, get_output(k, "l"))
-      expose_output(this, get_output(j, "k"))
+      expose_output(this, get_output(k, "l"), as: "l")
+      expose_output(this, get_output(j, "k"), as: "k")
     end
   end
 end

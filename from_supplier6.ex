@@ -35,7 +35,7 @@ defmodule FromSupplier6 do
       {:ok, m} =
         add_component(this, "M", M, %{}, %{"e" => get_output(i, "e"), "d" => get_output(r, "d")})
 
-      expose_output(this, get_output(m, "c"))
+      expose_output(this, get_output(m, "c"), as: "c")
     end
   end
 end
